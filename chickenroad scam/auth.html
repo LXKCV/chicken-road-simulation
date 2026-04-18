@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chicken Road — Connexion / Inscription</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css"/>
+  <link rel="stylesheet" href="css/auth.css"/>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header id="main-nav"></header>
+
+  <main class="auth-page">
+    <div class="auth-card">
+
+      <span class="auth-logo">🐔</span>
+      <h1 class="auth-title">CHICKEN ROAD</h1>
+
+      <!-- TABS -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login"    onclick="switchTab('login')">CONNEXION</button>
+        <button class="auth-tab"        id="tab-register" onclick="switchTab('register')">INSCRIPTION</button>
+      </div>
+
+      <!-- ═══ LOGIN FORM ═══ -->
+      <form class="auth-form" id="loginForm" onsubmit="handleLogin(event)" novalidate>
+
+        <div class="field-group">
+          <label class="field-label" for="loginUsername">NOM D'UTILISATEUR</label>
+          <input
+            class="field-input"
+            id="loginUsername"
+            type="text"
+            placeholder="Entrez votre nom d'utilisateur"
+            autocomplete="username"
+            spellcheck="false"
+          />
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="loginPassword">MOT DE PASSE</label>
+          <div class="field-password">
+            <input
+              class="field-input"
+              id="loginPassword"
+              type="password"
+              placeholder="Entrez votre mot de passe"
+              autocomplete="current-password"
+            />
+            <button type="button" class="pwd-toggle" onclick="togglePwd('loginPassword', this)" aria-label="Afficher/masquer">👁</button>
+          </div>
+        </div>
+
+        <div class="field-error" id="loginError"></div>
+
+        <button type="submit" class="btn-neon btn-full">CONNEXION</button>
+
+        <p class="auth-switch">
+          Pas de compte ?
+          <a onclick="switchTab('register')" role="button" tabindex="0">S'inscrire ici</a>
+        </p>
+
+      </form>
+
+      <!-- ═══ REGISTER FORM ═══ -->
+      <form class="auth-form hidden" id="registerForm" onsubmit="handleRegister(event)" novalidate>
+
+        <div class="field-group">
+          <label class="field-label" for="regUsername">NOM D'UTILISATEUR</label>
+          <input
+            class="field-input"
+            id="regUsername"
+            type="text"
+            placeholder="Choisissez un nom (3-20 caractères)"
+            autocomplete="username"
+            spellcheck="false"
+            maxlength="20"
+          />
+          <div class="field-hint">Lettres, chiffres et _ uniquement</div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="regPassword">MOT DE PASSE</label>
+          <div class="field-password">
+            <input
+              class="field-input"
+              id="regPassword"
+              type="password"
+              placeholder="Min. 6 caractères"
+              autocomplete="new-password"
+            />
+            <button type="button" class="pwd-toggle" onclick="togglePwd('regPassword', this)" aria-label="Afficher/masquer">👁</button>
+          </div>
+          <div class="pwd-strength"><div class="pwd-strength-bar" id="pwdStrengthBar"></div></div>
+          <div class="pwd-hint" id="pwdHint"></div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="regConfirm">CONFIRMER LE MOT DE PASSE</label>
+          <div class="field-password">
+            <input
+              class="field-input"
+              id="regConfirm"
+              type="password"
+              placeholder="Répétez votre mot de passe"
+              autocomplete="new-password"
+            />
+            <button type="button" class="pwd-toggle" onclick="togglePwd('regConfirm', this)" aria-label="Afficher/masquer">👁</button>
+          </div>
+        </div>
+
+        <div class="field-error" id="registerError"></div>
+
+        <div class="welcome-bonus">
+          🎁 Recevez peut-être <strong>$100 de solde de bienvenue</strong> à l'inscription !
+        </div>
+
+        <button type="submit" class="btn-neon btn-full">CRÉER UN COMPTE</button>
+
+        <p class="auth-switch">
+          Déjà un compte ?
+          <a onclick="switchTab('login')" role="button" tabindex="0">Se connecter ici</a>
+        </p>
+
+      </form>
+
+      <p class="auth-demo-notice">
+      </p>
+
+    </div>
+  </main>
+
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Render nav (not logged in)
+    renderNav('');
+
+    // If already logged in, redirect
+    if (isLoggedIn()) {
+      window.location.href = 'game.html';
+    }
+
+    // Check URL param for tab
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get('tab');
+    if (tab === 'register') {
+      switchTab('register');
+    }
+
+    // Allow Enter key to switch tab links
+    document.querySelectorAll('.auth-switch a[role="button"]').forEach(el => {
+      el.addEventListener('keydown', e => {
+        if (e.code === 'Enter' || e.code === 'Space') {
+          e.preventDefault(); el.click();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

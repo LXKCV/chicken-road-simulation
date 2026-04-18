@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chicken Road — Jouer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css"/>
+  <link rel="stylesheet" href="css/game.css"/>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header id="main-nav"></header>
+
+  <div class="game-page">
+    <div class="container">
+
+      <!-- PAGE HEADER -->
+      <div class="game-header">
+        <h1>🐔 CHICKEN ROAD</h1>
+        <div class="live-badge">
+          <span class="live-dot"></span>
+          DÉMO EN DIRECT
+        </div>
+      </div>
+
+      <div class="game-columns">
+
+        <!-- ══ ARENA ══ -->
+        <div class="arena-wrap" id="arenaWrap">
+
+          <div class="arena-topbar">
+            <span class="arena-title">Route de la Poule</span>
+            <span class="arena-hint">ESPACE / → pour sauter · C pour encaisser</span>
+          </div>
+
+          <!-- Canvas -->
+          <canvas id="gameCanvas"></canvas>
+
+          <!-- Result overlay -->
+          <div class="result-overlay" id="overlay">
+            <div class="ro-emoji"  id="ov-emoji">🎉</div>
+            <div class="ro-title"  id="ov-title">ENCAISSÉ !</div>
+            <div class="ro-sub"    id="ov-sub">Encaissé à 4.20×</div>
+            <div class="ro-amount" id="ov-amount">+$84.00</div>
+            <button class="ro-btn" onclick="resetGame()">REJOUER</button>
+          </div>
+
+          <!-- Multiplier trail -->
+          <div class="mult-trail" id="multTrail"></div>
+
+        </div>
+
+        <!-- ══ SIDEBAR ══ -->
+        <div class="sidebar">
+
+          <!-- BET PANEL -->
+          <div class="s-card">
+            <div class="slabel">MISE</div>
+            <div class="bet-wrap">
+              <span class="bet-sign">$</span>
+              <input
+                class="bet-input"
+                id="betInput"
+                type="number"
+                min="1"
+                placeholder="0.00"
+                value="10"
+              />
+            </div>
+
+            <div class="bet-chips">
+              <button class="chip" onclick="addBet(5)">+5</button>
+              <button class="chip" onclick="addBet(10)">+10</button>
+              <button class="chip" onclick="addBet(25)">+25</button>
+              <button class="chip" onclick="setBet('half')">½</button>
+              <button class="chip" onclick="setBet('double')">2×</button>
+            </div>
+
+            <!-- DIFFICULTY -->
+            <div class="slabel">NIVEAU DE RISQUE</div>
+            <div class="diff-grid">
+              <button class="diff-btn active" data-diff="easy" onclick="setDiff(this)">
+                FACILE
+                <span class="diff-risk">Risque faible</span>
+              </button>
+              <button class="diff-btn" data-diff="medium" onclick="setDiff(this)">
+                MOYEN
+                <span class="diff-risk">Risque moyen</span>
+              </button>
+              <button class="diff-btn" data-diff="hard" onclick="setDiff(this)">
+                DIFFICILE
+                <span class="diff-risk">Risque élevé</span>
+              </button>
+            </div>
+
+            <!-- LIVE STATS -->
+            <div class="stats-grid">
+              <div class="stat-box">
+                <div class="sl">MULTIPLICATEUR</div>
+                <div class="sv neon" id="statMult">1.00×</div>
+              </div>
+              <div class="stat-box">
+                <div class="sl">GAIN POTENTIEL</div>
+                <div class="sv green" id="statWin">$10.00</div>
+              </div>
+              <div class="stat-box">
+                <div class="sl">SAUTS</div>
+                <div class="sv" id="statJumps">0</div>
+              </div>
+              <div class="stat-box">
+                <div class="sl">PROCHAIN</div>
+                <div class="sv" id="statNext">1.30×</div>
+              </div>
+            </div>
+
+            <!-- ACTIONS -->
+            <button class="btn-neon btn-full" id="startBtn" onclick="startGame()">
+              🐔 LANCER LA PARTIE
+            </button>
+            <button class="jump-btn" id="jumpBtn" onclick="doJump()">
+              SAUTER →
+            </button>
+            <button class="cashout-btn" id="cashoutBtn" onclick="doCashout()">
+              💰 ENCAISSER
+            </button>
+
+            <div class="kbd-hint">
+              <kbd class="kbd">ESPACE</kbd> sauter &nbsp;·&nbsp;
+              <kbd class="kbd">C</kbd> encaisser
+            </div>
+          </div>
+
+          <!-- HISTORY -->
+          <div class="s-card">
+            <div class="slabel">DERNIÈRES PARTIES</div>
+            <div class="history-list" id="historyList">
+              <div class="h-empty">Aucune partie jouée.</div>
+            </div>
+          </div>
+
+          
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/game.js"></script>
+  <script>
+    // Auth guard — redirect to login if not connected
+    if (!requireAuth()) { /* redirected */ }
+
+    // Render nav
+    renderNav('game');
+  </script>
+
+</body>
+</html>

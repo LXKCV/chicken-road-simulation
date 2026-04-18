@@ -1,0 +1,234 @@
+/* ══════════════════════════════════════════════════
+   CHICKEN ROAD — Add Funds Page Styles
+══════════════════════════════════════════════════ */
+
+.funds-page {
+  position: relative; z-index: 1;
+  padding: 48px 0 80px;
+}
+.funds-page .container { max-width: 580px; }
+
+.funds-header {
+  text-align: center; margin-bottom: 36px;
+  animation: fadeUp .4s ease both;
+}
+.funds-header h1 {
+  font-family: var(--fh);
+  font-size: clamp(2.2rem, 7vw, 3.6rem);
+  letter-spacing: .08em; line-height: 1;
+  color: var(--neon);
+  text-shadow: 0 0 32px var(--neon-glow), 0 0 80px rgba(245,200,66,.12);
+  margin-bottom: 8px;
+}
+.funds-header p { color: var(--muted); font-size: .88rem; letter-spacing: .04em; }
+
+/* ── BALANCE CARD ─────────────────────────────── */
+.balance-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 24px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 16px;
+  animation: fadeUp .4s .05s ease both;
+  box-shadow: 0 16px 48px rgba(0,0,0,.4);
+  position: relative; overflow: hidden;
+}
+.balance-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon), transparent);
+}
+.bc-left .bc-label {
+  font-size: .68rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 6px;
+}
+.bc-left .bc-amount {
+  font-family: var(--fh);
+  font-size: 2.6rem; letter-spacing: .06em;
+  color: var(--neon);
+  text-shadow: 0 0 20px var(--neon-glow);
+  line-height: 1;
+}
+.bc-right {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+}
+.bc-status {
+  display: flex; align-items: center; gap: 6px;
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+  color: var(--green);
+}
+.bc-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: blink 2s infinite; }
+.bc-play-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--neon-dim); border: 1px solid rgba(245,200,66,.3);
+  border-radius: 40px; padding: 6px 14px;
+  font-size: .75rem; font-weight: 700; letter-spacing: .06em;
+  color: var(--neon); text-decoration: none; transition: all .18s;
+}
+.bc-play-btn:hover { background: var(--neon); color: #080910; }
+
+/* ── WARNING BANNER ───────────────────────────── */
+.demo-warning {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: rgba(255,64,85,.07);
+  border: 1px solid rgba(255,64,85,.22);
+  border-radius: var(--r);
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  font-size: .82rem; color: #ff8fa3; line-height: 1.55;
+  animation: fadeUp .4s .1s ease both;
+}
+.demo-warning .dw-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+/* ── MAIN DEPOSIT CARD ────────────────────────── */
+.deposit-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 28px 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+  animation: fadeUp .4s .15s ease both;
+}
+
+/* ── AMOUNT GRID ──────────────────────────────── */
+.amount-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px; margin-bottom: 12px;
+}
+.amount-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 14px 8px;
+  font-family: var(--fh); font-size: 1.4rem;
+  letter-spacing: .06em; color: var(--text2);
+  cursor: pointer; text-align: center;
+  transition: all .18s; position: relative; overflow: hidden;
+}
+.amount-btn:hover { border-color: var(--neon); color: var(--neon); background: var(--neon-dark); }
+.amount-btn.active {
+  border-color: var(--neon); background: var(--neon-dim);
+  color: var(--neon); box-shadow: 0 0 18px var(--neon-dim);
+}
+
+/* custom input */
+.custom-amount-wrap { position: relative; margin-bottom: 24px; }
+.ca-sign {
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  font-family: var(--fh); font-size: 1.2rem; color: var(--muted); pointer-events: none;
+}
+.ca-input {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--r);
+  padding: 13px 16px 13px 36px;
+  font-family: var(--fh); font-size: 1.3rem;
+  letter-spacing: .06em; color: var(--text);
+  outline: none; transition: border-color .18s, box-shadow .18s;
+}
+.ca-input::placeholder { color: var(--muted); }
+.ca-input:focus { border-color: var(--neon); box-shadow: 0 0 0 3px var(--neon-dim); }
+
+/* ── DIVIDER ──────────────────────────────────── */
+.deposit-divider {
+  border: none; border-top: 1px solid var(--border); margin: 24px 0;
+}
+
+/* ── PAYMENT METHODS ──────────────────────────── */
+.methods-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.method-item {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--r);
+  padding: 16px 20px; cursor: pointer;
+  transition: all .18s;
+}
+.method-item:hover { border-color: rgba(245,200,66,.25); }
+.method-item.active { border-color: var(--neon); background: var(--neon-dim); }
+.mi-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; flex-shrink: 0;
+}
+.mi-info { flex: 1; }
+.mi-name { font-weight: 700; font-size: .92rem; color: var(--text); margin-bottom: 2px; }
+.mi-sub  { font-size: .74rem; color: var(--muted); }
+.mi-radio {
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 2px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: all .18s;
+}
+.method-item.active .mi-radio {
+  border-color: var(--neon);
+  background: var(--neon);
+  box-shadow: 0 0 14px var(--neon-glow);
+}
+.mi-radio::after {
+  content: ''; width: 6px; height: 6px;
+  border-radius: 50%; background: #080910; display: none;
+}
+.method-item.active .mi-radio::after { display: block; }
+.mi-badge {
+  font-size: .65rem; font-weight: 700; letter-spacing: .06em;
+  padding: 3px 8px; border-radius: 20px; background: var(--neon-dim);
+  color: var(--neon); border: 1px solid rgba(245,200,66,.2);
+  white-space: nowrap;
+}
+
+/* ── ORDER SUMMARY ────────────────────────────── */
+.order-summary {
+  background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--r);
+  padding: 16px 20px; margin-bottom: 22px;
+}
+.os-row {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: .84rem; color: var(--muted); padding: 4px 0;
+}
+.os-row.total {
+  border-top: 1px solid var(--border);
+  margin-top: 10px; padding-top: 14px;
+  color: var(--text); font-weight: 700; font-size: 1rem;
+}
+.os-row.total .os-val {
+  font-family: var(--fh); font-size: 1.4rem;
+  letter-spacing: .05em; color: var(--neon);
+}
+.os-free { color: var(--green); font-weight: 700; }
+
+/* ── DEPOSIT BUTTON ───────────────────────────── */
+/* Uses .btn-neon.btn-full from global */
+
+/* ── HISTORY MINI ─────────────────────────────── */
+.deposit-history {
+  background: var(--card);
+  border: 1px solid var(--border); border-radius: var(--r-lg);
+  padding: 22px 24px; margin-top: 16px;
+  animation: fadeUp .4s .2s ease both;
+}
+.dh-list { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+.dh-item {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 10px 14px;
+  font-size: .8rem;
+}
+.dh-icon { font-size: 1.1rem; }
+.dh-info { flex: 1; }
+.dh-method { font-weight: 700; color: var(--text); }
+.dh-time   { font-size: .7rem; color: var(--muted); }
+.dh-amount { font-family: var(--fh); font-size: 1.1rem; color: var(--green); }
+.dh-empty  { text-align: center; padding: 20px; color: var(--muted); font-size: .82rem; }
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width: 480px) {
+  .amount-grid { grid-template-columns: repeat(2, 1fr); }
+  .balance-card { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .bc-right { align-items: flex-start; }
+}

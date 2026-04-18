@@ -1,0 +1,180 @@
+/* ══════════════════════════════════════════════════
+   CHICKEN ROAD — Auth Page Styles
+══════════════════════════════════════════════════ */
+
+.auth-page {
+  position: relative; z-index: 1;
+  min-height: calc(100vh - var(--nav-h));
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px 20px;
+}
+
+/* ── Decorative bg rings ── */
+.auth-page::before {
+  content: '';
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(245,200,66,.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.auth-card {
+  width: 100%; max-width: 440px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px 36px 36px;
+  box-shadow: 0 32px 80px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.05);
+  animation: fadeUp .45s ease both;
+  position: relative; overflow: hidden;
+}
+
+/* glow top edge */
+.auth-card::before {
+  content: '';
+  position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245,200,66,.5), transparent);
+}
+
+.auth-logo {
+  text-align: center;
+  font-size: 3.2rem;
+  margin-bottom: 8px;
+  animation: float 3s ease-in-out infinite;
+  display: block;
+}
+
+.auth-title {
+  font-family: var(--fh);
+  font-size: 2rem; letter-spacing: .12em;
+  color: var(--neon); text-align: center;
+  text-shadow: 0 0 20px var(--neon-glow);
+  margin-bottom: 28px;
+}
+
+/* ── TABS ─────────────────────────────────────── */
+.auth-tabs {
+  display: flex;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 4px; gap: 4px;
+  margin-bottom: 28px;
+}
+.auth-tab {
+  flex: 1;
+  background: transparent; border: none;
+  border-radius: calc(var(--r) - 2px);
+  padding: 10px;
+  font-family: var(--fh);
+  font-size: 1rem; letter-spacing: .1em;
+  color: var(--muted);
+  cursor: pointer; transition: all .22s;
+}
+.auth-tab:hover { color: var(--text); }
+.auth-tab.active {
+  background: var(--neon);
+  color: #080910;
+  box-shadow: 0 2px 12px rgba(245,200,66,.4);
+}
+
+/* ── FORMS ────────────────────────────────────── */
+.auth-form { animation: fadeIn .3s ease both; }
+.auth-form.hidden { display: none; }
+
+.field-password {
+  position: relative;
+}
+.field-password .field-input { padding-right: 48px; }
+.pwd-toggle {
+  position: absolute; right: 14px; top: 50%;
+  transform: translateY(-50%);
+  background: none; border: none;
+  font-size: 1rem; cursor: pointer;
+  opacity: .5; transition: opacity .18s;
+  padding: 4px;
+}
+.pwd-toggle:hover { opacity: 1; }
+
+/* ── Password strength bar ── */
+.pwd-strength {
+  height: 3px; border-radius: 2px;
+  margin-top: 6px;
+  background: var(--border);
+  overflow: hidden;
+}
+.pwd-strength-bar {
+  height: 100%;
+  border-radius: 2px;
+  width: 0%; transition: width .3s, background .3s;
+}
+.pwd-hint { font-size: .7rem; color: var(--muted); margin-top: 4px; }
+
+/* ── Welcome bonus pill ── */
+.welcome-bonus {
+  background: var(--green-dim);
+  border: 1px solid rgba(57,255,143,.25);
+  border-radius: var(--r-sm);
+  padding: 10px 14px;
+  font-size: .82rem; font-weight: 700;
+  color: var(--green); text-align: center;
+  margin-bottom: 16px;
+  letter-spacing: .02em;
+}
+
+/* ── Divider ── */
+.auth-or {
+  display: flex; align-items: center; gap: 12px;
+  margin: 16px 0; color: var(--muted); font-size: .75rem;
+  font-weight: 700; letter-spacing: .08em;
+}
+.auth-or::before, .auth-or::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+/* ── Switch link ── */
+.auth-switch {
+  text-align: center; margin-top: 16px;
+  font-size: .82rem; color: var(--muted);
+}
+.auth-switch a {
+  color: var(--neon); font-weight: 700; cursor: pointer;
+  transition: opacity .18s;
+}
+.auth-switch a:hover { opacity: .8; }
+
+.auth-demo-notice {
+  text-align: center; margin-top: 24px;
+  font-size: .72rem; color: var(--muted);
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Success state ── */
+.auth-success {
+  text-align: center; padding: 20px 0;
+}
+.auth-success .success-icon { font-size: 3rem; margin-bottom: 12px; }
+.auth-success h3 {
+  font-family: var(--fh); font-size: 1.6rem;
+  letter-spacing: .08em; color: var(--green); margin-bottom: 8px;
+}
+.auth-success p { font-size: .88rem; color: var(--text2); }
+
+/* ── Loading spinner ── */
+.spinner {
+  display: inline-block;
+  width: 18px; height: 18px;
+  border: 2px solid rgba(8,9,16,.3);
+  border-top-color: #080910;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  vertical-align: middle; margin-right: 8px;
+}
+
+@media (max-width: 480px) {
+  .auth-card { padding: 28px 20px 24px; }
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chicken Road — Le jeu de saut ultime</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css"/>
+  <link rel="stylesheet" href="css/home.css"/>
+</head>
+<body>
+
+  <!-- NAV (injected by JS) -->
+  <header id="main-nav"></header>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+
+      <div class="hero-content">
+        <div class="hero-badge">🎮 DÉMO GRATUITE · SANS ARGENT RÉEL</div>
+
+        <h1 class="hero-title">
+          CHICKEN<br>
+          <span class="line-neon">ROAD</span>
+        </h1>
+
+        <p class="hero-sub">
+          Guide ta poule à travers les friteuses brûlantes.
+          Chaque saut multiplie tes gains — jusqu'à <strong style="color:var(--neon)">27×</strong>.
+          Jusqu'où iras-tu ?
+        </p>
+
+        <div class="hero-cta">
+          <a href="#" id="playBtn" class="btn-neon btn-lg">🐔 JOUER MAINTENANT</a>
+          <a href="#how" class="btn-outline btn-lg">COMMENT JOUER</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hs-item">
+            <span class="hs-val">27×</span>
+            <span class="hs-label">Multiplicateur max</span>
+          </div>
+          <div class="hs-sep"></div>
+          <div class="hs-item">
+            <span class="hs-val">10</span>
+            <span class="hs-label">Friteuses à traverser</span>
+          </div>
+          <div class="hs-sep"></div>
+          <div class="hs-item">
+            <span class="hs-val">3</span>
+            <span class="hs-label">Niveaux de risque</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="chicken-hero">🐔</div>
+        <div class="road-preview">
+          <div class="rp-platform start-plat">START</div>
+          <div class="rp-arrow">→</div>
+          <div class="rp-pan" style="--i:0"><div class="rp-flame">🔥</div><span>1.30×</span></div>
+          <div class="rp-pan" style="--i:1"><div class="rp-flame">🔥</div><span>1.70×</span></div>
+          <div class="rp-pan" style="--i:2"><div class="rp-flame">🔥</div><span>2.20×</span></div>
+          <div class="rp-dots">•••</div>
+          <div class="rp-pan jackpot"><div class="rp-flame">🔥</div><span>27×</span></div>
+        </div>
+        <p class="visual-caption">🐔 La route de la poule — traversez tout pour 27×</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ FEATURES ══ -->
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">POURQUOI <span class="accent">CHICKEN ROAD</span> ?</h2>
+      <div class="features-grid">
+
+        <div class="feat-card">
+          <div class="feat-icon">🚀</div>
+          <h3>Multiplicateurs jusqu'à 27×</h3>
+          <p>Chaque saut réussi augmente dramatiquement vos gains. 10 friteuses vous séparent du jackpot ultime.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">⚙️</div>
+          <h3>3 Niveaux de risque</h3>
+          <p>Choisissez Facile, Moyen ou Difficile. Plus le risque est élevé, plus les gains sont importants — mais un mauvais saut et c'est terminé.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">💰</div>
+          <h3>Encaissez n'importe quand</h3>
+          <p>Ressentez la pression monter ? Encaissez votre multiplicateur actuel à tout moment avant que la poule ne brûle.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ HOW TO PLAY ══ -->
+  <section class="how" id="how">
+    <div class="container">
+      <h2 class="section-title">COMMENT <span class="accent">JOUER</span></h2>
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-icon">📝</div>
+          <h3>Créez un compte</h3>
+          <p>Inscrivez-vous avec un nom d'utilisateur et un mot de passe. Obtenez <strong style="color:var(--neon)">$100 de solde de bienvenue</strong> pour commencer immédiatement.</p>
+        </div>
+
+        <div class="step-line"></div>
+
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-icon">💵</div>
+          <h3>Placez votre mise</h3>
+          <p>Choisissez votre montant et votre niveau de risque. Facile, Moyen ou Difficile — chacun change votre probabilité de gagner.</p>
+        </div>
+
+        <div class="step-line"></div>
+
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-icon">🐔</div>
+          <h3>Sautez et gagnez</h3>
+          <p>Cliquez sur Sauter pour envoyer votre poule à travers les friteuses. Encaissez n'importe quand ou visez le jackpot de 27× !</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA ══ -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-inner">
+        <h2>PRÊT À <span style="color:var(--neon)">JOUER</span> ?</h2>
+        <p>Créez votre compte gratuit et commencez avec $100 de bienvenue.</p>
+        <div class="cta-buttons">
+          <a href="#" id="ctaPlayBtn" class="btn-neon btn-lg">🐔 COMMENCER À JOUER</a>
+          <a href="add-funds.html" id="ctaFundsBtn" class="btn-outline btn-lg" style="display:none">💰 AJOUTER DES FONDS</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-logo">🐔 CHICKEN ROAD</div>
+      <p class="footer-warning">18+ | Jouez de façon responsable.</p>
+      <p class="footer-copy">© 2025 Chicken Road</p>
+    </div>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script>
+    // Render nav
+    renderNav('home');
+
+    // Routing buttons based on auth state
+    const logged = isLoggedIn();
+    document.getElementById('playBtn').href    = logged ? 'game.html' : 'auth.html?tab=register';
+    document.getElementById('ctaPlayBtn').href = logged ? 'game.html' : 'auth.html?tab=register';
+    document.getElementById('ctaPlayBtn').textContent = logged ? '🎮 JOUER MAINTENANT' : '🐔 CRÉER UN COMPTE';
+
+    if (logged) {
+      document.getElementById('ctaFundsBtn').style.display = 'inline-flex';
+    }
+  </script>
+
+</body>
+</html>

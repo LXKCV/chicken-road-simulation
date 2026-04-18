@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chicken Road — Ajouter des fonds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css"/>
+  <link rel="stylesheet" href="css/funds.css"/>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header id="main-nav"></header>
+
+  <main class="funds-page">
+    <div class="container">
+
+      <!-- HEADER -->
+      <div class="funds-header">
+        <h1>AJOUTER DES FONDS</h1>
+        <p>Rechargez votre portefeuille maintenant !</p>
+      </div>
+
+      <!-- BALANCE CARD -->
+      <div class="balance-card">
+        <div class="bc-left">
+          <div class="bc-label">SOLDE ACTUEL</div>
+          <div class="bc-amount">$<span id="displayBalance">0.00</span></div>
+        </div>
+        <div class="bc-right">
+          <div class="bc-status"><span class="bc-dot"></span> COMPTE ACTIF</div>
+          <a href="game.html" class="bc-play-btn">🎮 JOUER MAINTENANT</a>
+        </div>
+      </div>
+
+
+      <!-- DEPOSIT CARD -->
+      <div class="deposit-card">
+
+        <!-- AMOUNT -->
+        <div class="slabel">MONTANT DU DÉPÔT</div>
+        <div class="amount-grid">
+          <button class="amount-btn" onclick="selectPresetAmount(this, 20)">$20</button>
+          <button class="amount-btn" onclick="selectPresetAmount(this, 50)">$50</button>
+          <button class="amount-btn" onclick="selectPresetAmount(this, 100)">$100</button>
+          <button class="amount-btn" onclick="selectPresetAmount(this, 200)">$200</button>
+        </div>
+
+        <div class="custom-amount-wrap">
+          <span class="ca-sign">$</span>
+          <input
+            class="ca-input"
+            id="customAmountInput"
+            type="number"
+            min="1"
+            max="10000"
+            placeholder="Montant personnalisé..."
+            oninput="onCustomAmountInput(event)"
+          />
+        </div>
+
+        <hr class="deposit-divider"/>
+
+        <!-- PAYMENT METHODS -->
+        <div class="slabel">MÉTHODE DE PAIEMENT</div>
+        <div class="methods-list">
+
+          <div class="method-item active" data-method="paypal" onclick="selectMethod(this, 'paypal')">
+            <div class="mi-icon">🅿️</div>
+            <div class="mi-info">
+              <div class="mi-name">PayPal envoyez à ce liens: paypal.me/Lucasabraham10</div>
+              <div class="mi-sub">Dépôt instantané</div>
+            </div>
+            <span class="mi-badge">RAPIDE</span>
+            <div class="mi-radio"></div>
+          </div>
+
+          <div class="method-item" data-method="crypto" onclick="selectMethod(this, 'crypto')">
+            <div class="mi-icon">₿</div>
+            <div class="mi-info">
+              <div class="mi-name">Crypto</div>
+              <div class="mi-sub">BTC · ETH · USDT</div>
+            </div>
+            <span class="mi-badge">INSTANTANE</span>
+            <div class="mi-radio"></div>
+          </div>
+
+        </div>
+
+        <!-- ORDER SUMMARY -->
+        <div class="order-summary">
+          <div class="os-row">
+            <span>Montant du dépôt</span>
+            <span id="sumAmount">—</span>
+          </div>
+          <div class="os-row">
+            <span>Frais de traitement</span>
+            <span class="os-free">GRATUIT</span>
+          </div>
+          <div class="os-row total">
+            <span>Vous recevez</span>
+            <span class="os-val" id="sumTotal">$0.00</span>
+          </div>
+        </div>
+
+        <!-- SUBMIT -->
+        <button
+          class="btn-neon btn-full"
+          id="depositBtn"
+          disabled
+        >
+          💳 DÉPÔT
+        </button>
+
+      </div>
+
+      <!-- HISTORY -->
+      <div class="deposit-history">
+        <div class="slabel">HISTORIQUE DES DÉPÔTS</div>
+        <div class="dh-list" id="depositHistoryList">
+          <div class="dh-empty">Aucun dépôt effectué pour l'instant.</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/utils.js"></script>
+  <script src="js/funds.js"></script>
+  <script>
+    // Auth guard
+    if (!requireAuth()) { /* redirected */ }
+
+    // Render nav
+    renderNav('funds');
+  </script>
+
+</body>
+</html>
